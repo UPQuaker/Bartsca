@@ -215,6 +215,14 @@ public final class BuilderProcess extends BaritoneProcessHelper implements IBuil
         int lengthZ = Math.abs(corner1.getZ() - corner2.getZ()) + 1;
         build("clear area", new FillSchematic(widthX, heightY, lengthZ, Blocks.AIR.getDefaultState()), origin);
     }
+    
+    public void railArea(BlockPos corner1, BlockPos corner2) {
+        BlockPos origin = new BlockPos(Math.min(corner1.getX(), corner2.getX()), Math.min(corner1.getY(), corner2.getY()), Math.min(corner1.getZ(), corner2.getZ()));
+        int widthX = Math.abs(corner1.getX() - corner2.getX()) + 1;
+        int heightY = Math.abs(corner1.getY() - corner2.getY()) + 1;
+        int lengthZ = Math.abs(corner1.getZ() - corner2.getZ()) + 1;
+        build("rail area", new FillSchematic(widthX, heightY, lengthZ, Blocks.OBSIDIAN.getDefaultState()), origin);
+    }
 
     @Override
     public List<IBlockState> getApproxPlaceable() {
